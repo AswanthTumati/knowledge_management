@@ -1,0 +1,117 @@
+.sidebar {
+  width: 280px;
+  background: white;
+  border-right: 1px solid #dee2e6;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-nav {
+  padding: 1.5rem 0;
+}
+
+.nav-section {
+  margin-bottom: 2rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.nav-section-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 1.5rem 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  
+  &:hover {
+    background: #f8f9fa;
+    color: #ff6b35;
+    
+    .nav-icon {
+      color: #ff6b35;
+    }
+  }
+  
+  &.active {
+    background: #fff3e0;
+    color: #ff6b35;
+    border-right: 3px solid #ff6b35;
+    
+    .nav-icon {
+      color: #ff6b35;
+    }
+    
+    .nav-text {
+      font-weight: 600;
+    }
+  }
+}
+
+.nav-icon {
+  width: 20px;
+  margin-right: 0.75rem;
+  color: #6c757d;
+  transition: color 0.3s ease;
+}
+
+.nav-text {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.badge-new {
+  background: #ff6b35;
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-left: 0.5rem;
+}
+
+.status-active {
+  color: #28a745;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .sidebar-nav {
+    padding: 1rem 0;
+  }
+  
+  .nav-item {
+    padding: 0.5rem 1rem;
+  }
+  
+  .nav-section-title {
+    margin: 0 1rem 0.5rem;
+  }
+}
