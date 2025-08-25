@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DashboardContext } from '../context/DashboardContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faSearch, 
@@ -8,7 +9,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import './Header.scss';
 
-const Header = ({ notifications }) => {
+const Header = () => {
+
+    const { notifications } = useContext(DashboardContext);
+
   return (
     <header className="header">
       <div className="header-left">
@@ -35,15 +39,11 @@ const Header = ({ notifications }) => {
       
       <div className="header-right">
         <div className="header-actions">
-          <button className="action-btn">
-            <FontAwesomeIcon icon={faCog} />
-          </button>
-          <button className="action-btn">
-            <FontAwesomeIcon icon={faClock} />
-          </button>
+          <button className="action-btn"><FontAwesomeIcon icon={faCog} /></button>
+          <button className="action-btn"><FontAwesomeIcon icon={faClock} /></button>
           <button className="action-btn notification-btn">
             <FontAwesomeIcon icon={faBell} />
-            <span className="notification-badge">{ notifications }</span>
+            {notifications > 0 && <span className="notification-badge">{notifications}</span>}
           </button>
         </div>
         

@@ -1,0 +1,23 @@
+.all-documents {
+  .section-header {
+    margin-bottom: 1rem;
+    h1 { font-size: 1.5rem; margin: 0 0 .25rem 0; color: #333; }
+    p { margin: 0; color: #6c757d; }
+  }
+
+  .documents-card { padding: 0; overflow: hidden; }
+
+  .documents-table {
+    width: 100%; border-collapse: collapse; font-size: .95rem;
+    thead th {
+      text-align: left; padding: .75rem 1rem; background: #f8f9fa;
+      border-bottom: 1px solid #dee2e6; color: #6c757d; font-size: .8rem;
+      text-transform: uppercase; letter-spacing: .5px;
+    }
+    tbody td { padding: .9rem 1rem; border-bottom: 1px solid #f1f3f4; color: #333; }
+    tbody tr:hover { background: #f8f9fa; }
+    .name { font-weight: 600; }
+  }
+
+  .empty-state { padding: 1.25rem; color: #6c757d; }
+}

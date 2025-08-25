@@ -1,62 +1,42 @@
-import React, {useState, useEffect} from 'react';
-import './App.scss';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import Dashboard from './components/Dashboard';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { DashboardProvider } from "./context/DashboardContext";
 
-function App() {
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Dashboard from "./components/Dashboard";
+import UploadDocuments from "./components/UploadDocuments";
+import AllDocuments from "./components/AllDocuments";
+import UserManagement from "./components/UserManagement";
+import SharePointOnline from "./components/SharePointOnline";
+import "./App.scss";
 
-    const [dashboardData, setDashboardData] = useState({
-    totalDocuments: 0,
-    vectorChunks: 0,
-    totalConversations: 0,
-    storageUsed: "0 MB",
-    topQuestion: { text: "", asks: 0, period: "7d" },
-    topSearch: { text: "", searches: 0, period: "7d" },
-    mostViewed: { file: "", views: 0, period: "all time" },
-    systemStatus: {
-      vectorDB: { status: "offline", details: "" },
-      ragSystem: { status: "offline", details: "" },
-      documentProcessing: { status: "offline", details: "" }
-    },
-    notifications: 0
-  });
 
-  useEffect(() => {
-    
-    const mockData = {
-      totalDocuments: 7,
-      vectorChunks: 45,
-      totalConversations: 59,
-      storageUsed: "4.3 MB",
-      topQuestion: { text: "what is the vacation policy?", asks: 15, period: "7d" },
-      topSearch: { text: "vacation policy", searches: 18, period: "7d" },
-      mostViewed: { file: "e8aa5ae6-ffbe-44a5-9597-f3a728b36533.docx", views: 49, period: "all time" },
-      systemStatus: {
-        vectorDB: { status: "online", details: "80 chunks ready" },
-        ragSystem: { status: "online", details: "Question answering operational" },
-        documentProcessing: { status: "ready", details: "Ready to process uploads" }
-      },
-      notifications: 5
-    };
+//const UserManagement = () => <div className="dashboard-card" style={{padding:"1.5rem"}}>User Management</div>;
+//const SharePointOnline = () => <div className="dashboard-card" style={{padding:"1.5rem"}}>SharePoint Online</div>;
 
-    setDashboardData(mockData);
-  }, []);
 
+export default function App() {
   return (
-    <div className="app">
-      <Header notifications={dashboardData.notifications}/>
-      <div className="main-container">
-        <Sidebar />
-        <main className="main-content">
-          <Dashboard  
-            dashboardData={dashboardData}
-            setDashboardData={setDashboardData}
-          />
-        </main>
-      </div>
-    </div>
+    <DashboardProvider>
+      <Router>
+        <div className="app">
+          <Header />
+          <div className="main-container">
+            <Sidebar />
+            <main className="main-content">
+              <Routes>
+                <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/upload" element={<UploadDocuments />} />
+                <Route path="/documents" element={<AllDocuments />} />
+                <Route path="/users" element={<UserManagement />} />
+                <Route path="/sharepoint" element={<SharePointOnline />} />
+              </Routes>
+            </main>
+          </div>
+        </div>
+      </Router>
+    </DashboardProvider>
   );
 }
-
-export default App;
