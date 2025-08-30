@@ -7,11 +7,20 @@ import {
   faClock, 
   faBell 
 } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';  // ✅ Added
 import './Header.scss';
 
 const Header = () => {
+  const { notifications } = useContext(DashboardContext);
+  const navigate = useNavigate();  // ✅ Added
 
-    const { notifications } = useContext(DashboardContext);
+  const handleSearch = () => {
+    navigate('/search');   // ✅ Navigates to search page
+  };
+
+  const handleNotifications = () => {
+    navigate('/notifications');  // ✅ Navigates to notifications page
+  };
 
   return (
     <header className="header">
@@ -27,21 +36,30 @@ const Header = () => {
       
       <div className="header-center">
         <div className="search-container">
-          <FontAwesomeIcon icon={faSearch} className="search-icon" />
+          <FontAwesomeIcon 
+            icon={faSearch} 
+            className="search-icon" 
+            onClick={handleSearch}   // ✅ Navigation added
+          />
           <input 
             type="text" 
             placeholder="Search across all knowledge repositories..." 
             className="search-input"
           />
-          <button className="ok-button">OK</button>
+          <button className="ok-button" onClick={handleSearch}>OK</button>
         </div>
       </div>
       
       <div className="header-right">
         <div className="header-actions">
+          {/*
           <button className="action-btn"><FontAwesomeIcon icon={faCog} /></button>
           <button className="action-btn"><FontAwesomeIcon icon={faClock} /></button>
-          <button className="action-btn notification-btn">
+          */}
+          <button 
+            className="action-btn notification-btn"
+            onClick={handleNotifications}  // ✅ Navigation added
+          >
             <FontAwesomeIcon icon={faBell} />
             {notifications > 0 && <span className="notification-badge">{notifications}</span>}
           </button>

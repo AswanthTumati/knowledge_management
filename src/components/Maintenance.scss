@@ -1,0 +1,60 @@
+.maintenance-page {
+  text-align: center;
+  padding: 3rem;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #d9534f;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #444;
+  }
+
+  .working-sections,
+  .not-working-sections {
+    margin: 1.5rem 0;
+    text-align: left;
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+  }
+
+  .working-sections {
+    background: #eafbe7;
+    border: 1px solid #b2e0b2;
+
+    h3 {
+      color: #2e7d32;
+    }
+
+    li {
+      color: #388e3c;
+    }
+  }
+
+  .not-working-sections {
+    background: #fff3cd;
+    border: 1px solid #ffeeba;
+
+    h3 {
+      color: #856404;
+    }
+
+    li {
+      color: #8a6d3b;
+    }
+  }
+
+  .note {
+    margin-top: 2rem;
+    font-style: italic;
+    color: #555;
+  }
+}

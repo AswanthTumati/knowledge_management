@@ -7,14 +7,8 @@ import Sidebar from "./components/Sidebar";
 import Dashboard from "./components/Dashboard";
 import UploadDocuments from "./components/UploadDocuments";
 import AllDocuments from "./components/AllDocuments";
-import UserManagement from "./components/UserManagement";
-import SharePointOnline from "./components/SharePointOnline";
+import Maintenance from "./components/Maintenance"; // ✅ New Component Import
 import "./App.scss";
-
-
-//const UserManagement = () => <div className="dashboard-card" style={{padding:"1.5rem"}}>User Management</div>;
-//const SharePointOnline = () => <div className="dashboard-card" style={{padding:"1.5rem"}}>SharePoint Online</div>;
-
 
 export default function App() {
   return (
@@ -26,12 +20,20 @@ export default function App() {
             <Sidebar />
             <main className="main-content">
               <Routes>
+                {/* Default redirect */}
                 <Route path="/" element={<Navigate to="/dashboard" replace />} />
+
+                {/* Active routes */}
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/upload" element={<UploadDocuments />} />
                 <Route path="/documents" element={<AllDocuments />} />
-                <Route path="/users" element={<UserManagement />} />
-                <Route path="/sharepoint" element={<SharePointOnline />} />
+
+                {/* Under Maintenance routes */}
+                <Route path="/users" element={<Maintenance />} />
+                <Route path="/sharepoint" element={<Maintenance />} />
+
+                {/* Catch-all route (optional) */}
+                <Route path="*" element={<Maintenance />} />
               </Routes>
             </main>
           </div>
